@@ -6,25 +6,38 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'airbnb',
-    'plugin:storybook/recommended',
     'prettier',
   ],
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   rules: {
-    '@typescript-eslint/interface-name-prefix': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-explicit-any': 'error',
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
-    'import/no-extraneous-dependencies': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '**/*.stories.tsx',
+          '**/*.stories.ts',
+          '**/src/stories/**/*',
+        ],
+      },
+    ],
     'no-use-before-define': 'off',
-    'react/require-default-props': 'off',
+    'react/require-default-props': [
+      'error',
+      {
+        functions: 'defaultArguments',
+      },
+    ],
     'react/jsx-props-no-spreading': 'off',
     'jsx-a11y/label-has-associated-control': [
       'error',

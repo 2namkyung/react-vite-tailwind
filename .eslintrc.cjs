@@ -10,6 +10,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    commonjs: true,
   },
   rules: {
     '@typescript-eslint/no-explicit-any': 'warn',
@@ -20,4 +21,4 @@ module.exports = {
       version: 'detect',
     },
   },
-}; 
+};
